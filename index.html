@@ -3,122 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lab 1 Story</title>
+    <title>Lab 2</title>
 
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <section class="title">
-      <div class="card">
-        <h1>Jinji Lake Trip</h1>
-        <h2>Exploring the Culture and Beauty of Suzhou near Shanghai, China</h2>
-        <p> Scroll down for the story</p>
-      </div>
-    </section>
+    function resizeCanvas(){
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-    <section class="ketchikan parallaxsection">
-      <div class="revealbox">
-        <img src="images/jinjilake.jpg" alt="Jinji Lake View" style="width: 500px; height: auto;">
-        <div class="card">
-          <p>
-            This is a photo of the Suzhou skyline taken from the Jinji Lake. The lake is a popular destination 
-            for both locals and tourists, offering beautiful views and a variety of recreational activities.
-          </p>
-       </div>
-      </div>
-    </section>
+        const aspect = (window.innerWidth / window.innerHeight).toFixed(2);
+        windowVal.textContent = '${window.innerWidth} x ${window.innerHeight} (${aspect})';
 
-    <section class="storyintroduction">
-      <div class="card">
-        <p>
-          It was an early Tuesday morning which began with the sharp beep of the Shanghai subway, surrounded 
-          by a crowd of people during the early morning rush hours who needed to go to work. It took 3 hours 
-          to get to Jinji Lake via Shanghai Metro Line 11. I had been to Suzhou several times before this trip
-          but it was the first time I went to Jinji Lake, which is a new area in Suzhou, China. 
-        </p>
+        if (window.innerWidth < 600) {
+            windowVal.style.color = "red";
+        } 
+        else {
+            windowVal.style.color = "black";
+        }
+    }
 
-      </div>     
-    </section>
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
 
-    <section class="chinesefoodstyle parallaxsection">
-       <div class="card">
-        <h1>Suzhou Cuisine for Lunch</h1>
-        <p>
-          During lunch, I tried Jiangsu cuisine. This cuisine tasted very good as I tried new 
-          seafood such the savory-sweet Yuanbao shrimp. The textures are incredibly soft and tender, 
-          and the flavors are rich and complex. The shrimp is cooked to perfection, with a delicate 
-          balance of sweetness that makes it a true delight for the taste buds. The dish is often served 
-          with a light sauce that enhances the natural flavors of the shrimp, making it a must-try for 
-          anyone visiting Suzhou. Overall, food was delicious and Chinese cuisine is the best cuisine I had 
-          ever tried in my life. 
-        </p>
-      </div>
-    </section>
+    class Atom {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.1) this.size -= 0.02;
+            }
+            draw() {
+                ctx.fillStyle = `hsl(${hueAccent}, 100%, 70%)`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+    function updateTimeline(){
+        const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+        timeVal.text = `${elapsedSeconds} seconds`;
+        
+        if (elapsedSeconds % 10 === 0 && elapsedSeconds > 0){
+            const shiftGrid = (elapsedSeconds / 10) % 2 === 0 ? 1 : -1;
+            document.body.style.backgroundColor = `hsl(${hueAccent + shiftGrid * 30}, 100%, 90%)`;
+        }
+    }
 
-     <section class="storycontent">
-      <div class="card">
-        <h1>Gate to the East: An important landmark and building of Suzhou</h1>
-        <p>
-          Gate to the East is a very prominent building near Jinji Lake, which is the second 
-          tallest building in Suzhou behind Suzhou International Financial Square. Standing
-          by Jinji Lake, the towering arch of the Gate to the East felt like the true portal 
-          between Suzhou's ancient water-town heritage and its furutistic skyline which was like
-          Shanghai's futuristic timeline. Exploring the bustling plaza right at the foot of the 
-          landmark offered an energetic mix of modern architectyure, great dining and open lakeside
-          views at an ice cream shop named lapecoranera. 
-        </p>
-      </div>
-      
-      <div class="revealbox">
-        <img src="images/gatetotheeast.jpg" alt="Gate to the East in Suzhou, Jiangsu, China" style="width: 300px; height: auto;">
-         <div class="card">
-          <p>
-            A photo of Gate to the East in Suzhou, China.
-          </p>
-         </div>
-      </div>
-    </section>
-
-    <section class="icecream parallaxsection">
-      <div class="revealbox">
-         <img src="images/jinjilakeicecream.jpg" alt="Jinji Lake Ice Cream Snack" style="width: 500px; height: auto;">
-         <div class="card">
-          <p>
-            Lapecoranera is a popular ice cream shop located near Jinji Lake. It offers a variety of 
-            delicious ice cream flavors and is a great place to cool down after exploring the city.
-          </p>
-         </div>
-      </div>
-      <div class="card">
-        <h1>Ice Cream Breaknear Jinji Lake</h1>
-        <p>
-          Right after the walk, I decided to take a break by the edge of Jinji Lake and enjoy a cup of ice 
-          cream at Laperanera. The weather was warm and sunny, making it the perfect day to indulge in a 
-          sweet treat. I chose a vanilla and chocolate double scoopice cream in a cup, which was creamy 
-          and rich, with just the right amount of sweetness. The ice cream was served cup. As I enjoyed 
-          the ice cream, I took in the stunning views of Jinji Lake and the surrounding Suzhou cityscape, 
-          feeling relaxed and content.
-        </p>
-       </div>
-    </section>
-
-    <section class="storycontent">
-      <div class="card">
-        <h1>Conclusion</h1>
-        <p>
-          Overall, my trip to Jinji Lake was an excellent experience. The combination of the beautiful 
-          scenery, delicious food, and relaxing ice cream break made the trip a memorable day. I would 
-          highly recommend visiting Jinji Lake to anyone looking for a peaceful escape from the hustle 
-          and bustle of city life.The return trip to Shanghai, China involved several hours of travelling
-          through the Suzhou Metro Line 3 and 11 and the Shanghai Metro Line 11 approximately the same
-          amount of time as I took to get to Jinji Lake. Back to Shanghai, I was able to reflect on how 
-          this trip was a great way to experience the culture of Suzhou. To date, I have been to several 
-          cities in China outside of Shanghai, which is my hometown, which included Shangrao, Suzhou, 
-          Ningbo, Nantong, Guangzhou, Shenzhen, Hangzhou, Huzhou, Beijing, and Nanjing. 
-        </p>
-      </div>
-    </section>
-
-  </body>
+    </body>
 </html>
