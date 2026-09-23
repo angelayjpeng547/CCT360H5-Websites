@@ -3,59 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lab 2</title>
-
+    <title>Lab 1</title>
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    function resizeCanvas(){
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    <header class="title">
+      <div class="card">
+        <h1>Stories in Motion</h1>
+        <p>
+          A small travel journal shaped by coastal views, comforting meals, and sweet
+          memories.
+        </p>
+      </div>
+    </header>
 
-        const aspect = (window.innerWidth / window.innerHeight).toFixed(2);
-        windowVal.textContent = '${window.innerWidth} x ${window.innerHeight} (${aspect})';
+    <main>
+      <section class="parallaxsection ketchikan">
+        <div class="card">
+          <h2>Ketchikan, Alaska</h2>
+          <p>
+            The air smelled like salt and cedar. Every turn by the water revealed a 
+            new horizon, and each weathered dock felt like a quiet chapter of a story
+            still being written.
+          </p>
+        </div>
+      </section>
 
-        if (window.innerWidth < 600) {
-            windowVal.style.color = "red";
-        } 
-        else {
-            windowVal.style.color = "black";
-        }
-    }
+      <section class="storyintroduction">
+        <div class="revealbox">
+          <h2>How the journey began</h2>
+          <p>
+            Long before the trip became a memory, it started as a curiosity to see how
+            a place could feel both familiar and new. The experience shaped the way I
+            noticed details: sunlight on the harbor, faces in the street, and the slow
+            rhythm of a town with its own pace.
+          </p>
+        </div>
+      </section>
 
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
+      <section class="parallaxsection chinesefoodstyle">
+        <div class="card">
+          <h2>Comfort in Chinese Cuisine</h2>
+          <p>
+            A warm plate of food can hold more than flavor; it can carry family traditions,
+            celebration, and the feeling of being cared for. The evening meal became a
+            place of comfort and connection.
+          </p>
+        </div>
+      </section>
 
-    class Atom {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.size = Math.random() * 3 + 1;
-                this.speedX = Math.random() * 2 - 1;
-                this.speedY = Math.random() * 2 - 1;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.size > 0.1) this.size -= 0.02;
-            }
-            draw() {
-                ctx.fillStyle = `hsl(${hueAccent}, 100%, 70%)`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-    function updateTimeline(){
-        const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-        timeVal.text = `${elapsedSeconds} seconds`;
-        
-        if (elapsedSeconds % 10 === 0 && elapsedSeconds > 0){
-            const shiftGrid = (elapsedSeconds / 10) % 2 === 0 ? 1 : -1;
-            document.body.style.backgroundColor = `hsl(${hueAccent + shiftGrid * 30}, 100%, 90%)`;
-        }
-    }
+      <section class="storycontent">
+        <div class="revealbox">
+          <h2>Favorite moments, captured slowly</h2>
+          <p>
+            It is often the smallest things that stay with us: the first taste of a favorite
+            dessert, the glow of a city at dusk, or the way a landscape changes light as the
+            hour passes. Those details turn into stories we keep carrying with us.
+          </p>
+        </div>
+      </section>
 
-    </body>
+      <section class="parallaxsection icecream">
+        <div class="card">
+          <h2>Ice Cream and Endings</h2>
+          <p>
+            Even the final stop can feel like a beginning. The sweetness of an ice cream cone
+            was a reminder that some of the best memories are simple, playful, and easy to linger on.
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
