@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #090909;
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+  background: #e1678e;
+}
+
+.title{
+  min-height: 500px;
+  padding: 50px;
+  background-color: #ed42a6c6;
+
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+
+}
+
+.title:hover{
+  background-color:#e1678e
+}
+
+
+.parallaxsection { /* Parallax Effect */
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.card{
+  background-color:pink;
+  padding: 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  max-width: 500px;
+  font-size: 20px;
+  margin-right: 80px;
+}
+
+.ketchikan{
+  background-image: url("images/ketchikanbackgroundimage.jpg");
+}
+
+.chinesefoodstyle{
+  background-image: url("images/chinesecuisine.jpg");
+}
+
+.icecream{
+  background-image: url("images/icecreambackground.jpg");
+}
+
+.storyintroduction { 
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: left;
+
+  text-align: left;
+
+  padding: 50px;
+  background-color: #ffa4d9;
+  transition: background-color 0.5 ease-in-out; 
+
+}
+
+.storyintroduction:hover{ /* motion */
+  background-color:#f4eaed
+}
+
+.storycontent {
+  min-height: 80vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: left;
+
+  text-align: left;
+
+  padding: 50px;
+  background: #ff93d2;
+}
+
+.storycontent:hover{ /* motion */
+  background-color: white;
+}
+
+@keyframes reveal{ /* progression reveal */
+  from{
+    opacity: 0;
+    transform: translateY (60px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY (0);
+  }
+}
+
+.revealbox{
+  animation: reveal linear both;
+  animation-timeline: view();
+  animation-range: entry 5% cover 30%;
+  justify-content: right;
+  align-items: right;
+}
+
+h1,h2 {
+  margin-bottom: 10px;
+}
+
+p {
+  line-height: 1.5;
+}
