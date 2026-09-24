@@ -8,6 +8,7 @@
   </head>
 
   <body>
+<<<<<<< HEAD
     <header class="title">
       <div class="card">
         <h1>Stories in Motion</h1>
@@ -74,5 +75,107 @@
         </div>
       </section>
     </main>
+=======
+    <div id="color"></div>
+
+    <div class="instructioncontainer">
+        <h1> Lab 2: Events in Motion </h1>
+        <p>
+            Interact with this webpage using either your mouse, keyboard or 
+            resizing the window as described below.
+        </p>
+    </div>
+
+    <div class="grid">
+        <div class="grid-item">
+            <h2>Mouse Events</h2>
+            <p id="mouse-value">Mouse Position: X: 0, Y: 0</p>
+        </div>
+        <div class="grid-item">
+            <h2>Keyboard Events</h2>
+            <p id="keyboard-value">Key Pressed: None</p>
+        </div>
+        <div class="grid-item">
+            <h2>Window Events</h2>
+            <p id="window-value">Window Size: Width: 0, Height: 0</p>
+        </div>
+    </div>
+    <div class="message-item">
+            <p id="message">The window is now large.</p>
+    </div>
+    <script>
+        const body = document.body;
+        const color = document.getElementById('color');
+        const mouseValue = document.getElementById('mouse-value');
+        const keyboardValue = document.getElementById('keyboard-value');
+        const windowValue = document.getElementById('window-value')
+
+        // Mouse move: Triggers dynamic flashlight colour position and coordinate layout text update
+        window.addEventListener("mousemove", (event) => {
+            color.style.xaxis = `${event.clientX - 150}px`;
+            color.style.yaxis = `${event.clientY - 150}px`;
+
+            mouseValue.textContent = `Mouse Position: X: ${event.clientX}, Y: ${event.clientY}`;
+
+            if (event.clientX < window.innerWidth / 3) {
+                color.style.backgroundColor = 'yellow';
+                color.style.color = 'white';
+            } else if (event.clientX >= window.innerWidth / 3 && event.clientX < (2 * window.innerWidth) / 3) {
+                color.style.backgroundColor = 'orange';
+                color.style.color = 'black';
+            } else {
+                color.style.backgroundColor = 'gold';
+                color.style.color = 'black';
+            }
+
+        });
+
+        window.addEventListener("touchmove", (event) => {
+            const touch = e.touches[0];
+            e.preventDefault(); // Prevent scrolling while touching
+
+            touch.style.xaxis = `${touch.clientX - 150}px`;
+            touch.style.yaxis = `${touch.clientY - 150}px`;
+            mouseValue.textContent = `Mouse Position: X: ${touch.clientX}, Y: ${touch.clientY}`;
+        });
+        // Keyboard move: Triggers background colour change based on key 
+        // pressed and key pressed text update
+        window.addEventListener("keydown", (event) => {
+            keyboardValue.textContent = `Key Pressed: ${event.key}`;
+
+            if (event.key === 'r') {
+                body.style.backgroundColor = 'red';
+                body.style.color = 'white';
+            } else if (event.key === 'p') {
+                body.style.backgroundColor = 'pink';
+                body.style.color = 'black';
+            } else if (event.key === 'v') {
+                body.style.backgroundColor = 'violet';
+                body.style.color = 'black';
+            }
+        })
+
+        // Window resize: Triggers a class if the window goes below a breaking point
+        function windowResizeHandler() {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const text = document.querySelector("#message");
+            windowValue.textContent = `Window Size: Width: ${windowWidth}, Height: ${windowHeight}`;
+
+            if (windowWidth < 700) {
+                document.body.classList.add('small');
+                text.textContent = "The window is now small.";
+            } else if (windowWidth >= 700 && windowHeight < 900) {
+                document.body.classList.add('medium');
+                text.textContent = "The window is now medium.";
+            } else {
+                document.body.classList.remove('small', 'medium');
+                text.textContent = "The window is now large.";
+            } 
+        }
+        window.addEventListener("resize", windowResizeHandler);
+        windowResizeHandler(); // Call it once to set the initial state
+    </script>
+>>>>>>> 2c81933 (Class Progress)
   </body>
 </html>
